@@ -1,0 +1,67 @@
+# Logfile created on 2020-12-25 02:14:49 +0600 by logger.rb/v1.4.2
+I, [2020-12-25T02:14:53.622819 #23270]  INFO -- : 
+Request: GET /tests
+Handler: TestsController#index
+Parameters: 
+Response: 200 [text/html] tests/index.html.erb
+
+I, [2020-12-25T02:17:10.990858 #23270]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {:id=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T02:18:34.757724 #23270]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {:id=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T02:21:16.877488 #23270]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {:id=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T02:37:27.150688 #23270]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {:id=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T02:38:03.615051 #23459]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {:id=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T02:41:06.456560 #23459]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {:id=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T02:48:26.767439 #23526]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {:id=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T03:29:25.389587 #23835]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {":id"=>"2"}
+Response: 200 [text/html] tests/show.html.erb
+
+I, [2020-12-25T03:36:49.402447 #23898]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {":id"=>"2"}
+Response: 200 [text/[]] tests/show.html.erb
+
+I, [2020-12-25T03:38:51.309224 #23909]  INFO -- : 
+Request: GET /tests/2
+Handler: TestsController#show
+Parameters: {":id"=>"2"}
+Response: 200 [text/[]] tests/show.html.erb
+

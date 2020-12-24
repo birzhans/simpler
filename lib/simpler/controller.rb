@@ -6,7 +6,7 @@ module Simpler
     attr_reader :name, :request, :response
 
     def initialize(env)
-      @name = extract_name
+      @name = get_name
       @request = Rack::Request.new(env)
       @response = Rack::Response.new
     end
@@ -22,26 +22,34 @@ module Simpler
       @response.finish
     end
 
+    def make_404_response
+      set_status 404
+      set_header['Content-Type'] = "text/plain"
+      make_404_response_body
+
+      @response.finish
+    end
+
     private
 
-    def extract_name
+    def get_name
       self.class.name.match('(?<name>.+)Controller')[:name].downcase
     end
 
     def set_headers(*type)
-      @response['Content-Type'] = type ? "text/#{type}" || 'text/html'
-    end
-
-    def set_status(status)
-      @response.status = status
-    end
-
-    def set_header(key, value)
-      @response[key] = value
+      @response['Content-Type'] = type ? "text/#{type}" : 'text/html'
     end
 
     def write_response
       body = render_body
+
+      @response.write(body)
+    end
+
+    def make_404_response_body
+      method = @request.env["REQUEST_METHOD"]
+      resource = @request.env["REQUEST_PATH"]
+      body = "Resource '#{resource}' for #{method} request method was not found."
 
       @response.write(body)
     end
@@ -51,19 +59,28 @@ module Simpler
     end
 
     def params
-      @request.params
+      @request.params.merge!(@request.env['simpler.params'])
     end
 
     def render(template)
       if template.instance_of?(Hash)
-         type = template.keys[0]
-         set_headers(type)
+        type = template.keys[0]
+        set_headers(type)
 
-         content = template.values[0]
-         @request.env['simpler.template'] = content
-       else
-         @request.env['simpler.template'] = template
-       end
+        content = template.values[0]
+        @request.env['simpler.template'] = content
+      else
+        @request.env['simpler.template'] = template
+      end
     end
+
+    def set_content_type(rendering_type)
+      @response['Content-Type'] = "text/#{rendering_type}"
+    end
+
+    def set_status(status_code)
+      @response.status = status_code
+    end
+
   end
 end
